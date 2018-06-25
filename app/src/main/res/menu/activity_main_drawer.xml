@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_top_stories"
+            android:icon="@drawable/ic_top_stories"
+            android:title="Top Stories" />
+        <item
+            android:id="@+id/nav_business"
+            android:icon="@drawable/ic_business"
+            android:title="Business" />
+        <item
+            android:id="@+id/nav_tech"
+            android:icon="@drawable/ic_technology"
+            android:title="Technology" />
+        <item
+            android:id="@+id/nav_cricket"
+            android:icon="@drawable/ic_cricket"
+            android:title="Cricket" />
+        <item
+            android:id="@+id/nav_fifa"
+            android:icon="@drawable/ic_fifa"
+            android:title="FIFA" />
+        <item
+            android:id="@+id/nav_entertainment"
+            android:icon="@drawable/ic_entertainment"
+            android:title="Entertainment" />
+        <item
+            android:id="@+id/nav_tv"
+            android:icon="@drawable/ic_tv"
+            android:title="TV" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>
