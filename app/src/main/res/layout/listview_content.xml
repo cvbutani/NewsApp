@@ -7,12 +7,13 @@
 
     <ImageView
         android:id="@+id/content_image"
-        android:layout_width="80dp"
-        android:layout_height="92dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
         tools:src="@drawable/ic_toi" />
 
     <LinearLayout

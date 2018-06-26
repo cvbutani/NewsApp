@@ -87,15 +87,15 @@ public class MainActivity extends AppCompatActivity
             Intent businessIntent = new Intent(this, BusinessActivity.class);
             startActivity(businessIntent);
             return true;
-        } else if (id == R.id.nav_tech) {
-
-        } else if (id == R.id.nav_cricket) {
-
-        } else if (id == R.id.nav_fifa) {
-
         } else if (id == R.id.nav_entertainment) {
 
-        }else if (id == R.id.nav_tv) {
+        } else if (id == R.id.nav_health) {
+
+        } else if (id == R.id.nav_science) {
+
+        } else if (id == R.id.nav_sports) {
+
+        }else if (id == R.id.nav_tech) {
 
         }else if (id == R.id.nav_share) {
 

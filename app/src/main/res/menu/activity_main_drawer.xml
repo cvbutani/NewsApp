@@ -7,31 +7,31 @@
         <item
             android:id="@+id/nav_top_stories"
             android:icon="@drawable/ic_top_stories"
-            android:title="Top Stories" />
+            android:title="@string/top_stories" />
         <item
             android:id="@+id/nav_business"
             android:icon="@drawable/ic_business"
-            android:title="Business" />
-        <item
-            android:id="@+id/nav_tech"
-            android:icon="@drawable/ic_technology"
-            android:title="Technology" />
-        <item
-            android:id="@+id/nav_cricket"
-            android:icon="@drawable/ic_cricket"
-            android:title="Cricket" />
-        <item
-            android:id="@+id/nav_fifa"
-            android:icon="@drawable/ic_fifa"
-            android:title="FIFA" />
+            android:title="@string/business" />
         <item
             android:id="@+id/nav_entertainment"
             android:icon="@drawable/ic_entertainment"
-            android:title="Entertainment" />
+            android:title="@string/entertainment" />
         <item
-            android:id="@+id/nav_tv"
-            android:icon="@drawable/ic_tv"
-            android:title="TV" />
+            android:id="@+id/nav_health"
+            android:icon="@drawable/ic_health"
+            android:title="@string/health" />
+        <item
+            android:id="@+id/nav_science"
+            android:icon="@drawable/ic_science"
+            android:title="@string/science" />
+        <item
+            android:id="@+id/nav_sports"
+            android:icon="@drawable/ic_cricket"
+            android:title="@string/sports" />
+        <item
+            android:id="@+id/nav_tech"
+            android:icon="@drawable/ic_technology"
+            android:title="@string/technology" />
     </group>
 
     <item android:title="Communicate">
