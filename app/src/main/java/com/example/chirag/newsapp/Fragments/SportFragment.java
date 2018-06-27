@@ -27,11 +27,11 @@ import java.util.List;
  */
 public class SportFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<NewsInfo>>{
 
-    private NewsDataAdapter mNewsDataAdapter;
-
     private static final int NEWS_LOADER_ID = 0;
+    private static final String SPORT_URL = "https://content.guardianapis.com/search?section=sport&show-fields=thumbnail&api-key=00d9a257-1ff3-4d33-bff4-b26e08cd141d";
 
-    private static final String SPORT_URL = "https://content.guardianapis.com/search?section=sport&api-key=00d9a257-1ff3-4d33-bff4-b26e08cd141d";
+    private NewsDataAdapter mNewsDataAdapter;
+    private LoaderManager mLoadManager;
 
     public SportFragment() {
         // Required empty public constructor
@@ -56,6 +56,12 @@ public class SportFragment extends Fragment implements LoaderManager.LoaderCallb
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mLoadManager.restartLoader(NEWS_LOADER_ID, null, this);
+    }
+
+    @Override
     public Loader<List<NewsInfo>> onCreateLoader(int id, Bundle args) {
         return new NewsLoader(getContext(), SPORT_URL);
     }
@@ -73,19 +79,19 @@ public class SportFragment extends Fragment implements LoaderManager.LoaderCallb
         mNewsDataAdapter.clear();
     }
 
-    public void checkInternetConnection(){
-        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+    public void checkInternetConnection() {
+
+        ConnectivityManager mConnectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = null;
-        if (cm != null) {
-            activeNetwork = cm.getActiveNetworkInfo();
+        if (mConnectivityManager != null) {
+            activeNetwork = mConnectivityManager.getActiveNetworkInfo();
         }
 
         boolean isConnected = (activeNetwork != null) && (activeNetwork.isConnectedOrConnecting());
 
         if (isConnected) {
-            LoaderManager loadManager = getActivity().getLoaderManager();
-            loadManager.initLoader(NEWS_LOADER_ID, null, this);
+            mLoadManager = getActivity().getLoaderManager();
+            mLoadManager.initLoader(NEWS_LOADER_ID, null, this);
         }
     }
-
 }

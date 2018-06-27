@@ -13,8 +13,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:scaleType="fitXY"
-        tools:src="@drawable/button_round" />
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="match_parent"

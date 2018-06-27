@@ -25,15 +25,15 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ScienceFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<NewsInfo>>{
+public class HomeFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<NewsInfo>> {
 
     private static final int NEWS_LOADER_ID = 0;
-    private static final String SCIENCE_URL = "https://content.guardianapis.com/search?section=science&show-fields=thumbnail&api-key=00d9a257-1ff3-4d33-bff4-b26e08cd141d";
+    private static final String Home_URL = "https://content.guardianapis.com/search&show-fields=thumbnail?api-key=00d9a257-1ff3-4d33-bff4-b26e08cd141d";
 
     private NewsDataAdapter mNewsDataAdapter;
     private LoaderManager mLoadManager;
 
-    public ScienceFragment() {
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -63,7 +63,7 @@ public class ScienceFragment extends Fragment implements LoaderManager.LoaderCal
 
     @Override
     public Loader<List<NewsInfo>> onCreateLoader(int id, Bundle args) {
-        return new NewsLoader(getContext(), SCIENCE_URL);
+        return new NewsLoader(getContext(), Home_URL);
     }
 
     @Override

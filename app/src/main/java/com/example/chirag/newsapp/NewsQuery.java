@@ -3,6 +3,8 @@ package com.example.chirag.newsapp;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -138,6 +140,8 @@ public class NewsQuery {
                     String title = "";
                     String description = "";
                     String publishedDate = "";
+                    JSONObject imageObject = null;
+                    String thumbnail = "";
 //                    if (source != null && source.has("id")) {
 //                        id = source.getString("id");
 //                        Log.i(LOG_TAG, "ID: " + id);
@@ -151,11 +155,17 @@ public class NewsQuery {
                     if (elementsInItem.has("webPublicationDate")) {
                         publishedDate = elementsInItem.getString("webPublicationDate");
                     }
+                    if (elementsInItem.has("fields")) {
+                        imageObject = elementsInItem.getJSONObject("fields");
+                        if (imageObject.has("thumbnail")) {
+                            thumbnail = imageObject.getString("thumbnail");
+                        }
+                    }
                     Log.i(LOG_TAG, "TITLE: " + title);
                     Log.i(LOG_TAG, "DESCRIPTION: " + description);
                     Log.i(LOG_TAG, "PUBLISHED DATE: " + publishedDate);
-
-                    newsDetails.add(new NewsInfo(title, description, publishedDate, R.drawable.asas));
+                    Log.i(LOG_TAG, "THUMBNAIL URL: " + thumbnail);
+                    newsDetails.add(new NewsInfo(title, description, publishedDate, thumbnail));
                 }
             }
 //                }

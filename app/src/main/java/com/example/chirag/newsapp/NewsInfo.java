@@ -5,9 +5,9 @@ public class NewsInfo {
     private String mTitle;
     private String mDescription;
     private String mDate;
-    private int mImageUrl;
+    private String mImageUrl;
 
-    public NewsInfo(String mTitle, String mDescription, String mDate, int mImageUrl) {
+    public NewsInfo(String mTitle, String mDescription, String mDate, String mImageUrl) {
         this.mTitle = mTitle;
         this.mDescription = mDescription;
         this.mDate = mDate;
@@ -26,7 +26,7 @@ public class NewsInfo {
         return mDate;
     }
 
-    public int getmImageUrl() {
+    public String getmImageUrl() {
         return mImageUrl;
     }
 }
