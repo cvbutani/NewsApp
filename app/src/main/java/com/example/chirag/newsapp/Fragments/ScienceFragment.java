@@ -1,4 +1,4 @@
-package com.example.chirag.newsapp;
+package com.example.chirag.newsapp.Fragments;
 
 
 import android.app.LoaderManager;
@@ -12,6 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.example.chirag.newsapp.NewsDataAdapter;
+import com.example.chirag.newsapp.NewsInfo;
+import com.example.chirag.newsapp.NewsLoader;
+import com.example.chirag.newsapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,15 +25,15 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EntertainmentFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<NewsInfo>> {
+public class ScienceFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<NewsInfo>>{
 
     private NewsDataAdapter mNewsDataAdapter;
 
     private static final int NEWS_LOADER_ID = 0;
 
-    private static final String Entertainment_URL = "https://content.guardianapis.com/search?section=tv-and-radio&api-key=00d9a257-1ff3-4d33-bff4-b26e08cd141d";
+    private static final String SCIENCE_URL = "https://content.guardianapis.com/search?section=science&api-key=00d9a257-1ff3-4d33-bff4-b26e08cd141d";
 
-    public EntertainmentFragment() {
+    public ScienceFragment() {
         // Required empty public constructor
     }
 
@@ -51,7 +57,7 @@ public class EntertainmentFragment extends Fragment implements LoaderManager.Loa
 
     @Override
     public Loader<List<NewsInfo>> onCreateLoader(int id, Bundle args) {
-        return new NewsLoader(getContext(), Entertainment_URL);
+        return new NewsLoader(getContext(), SCIENCE_URL);
     }
 
     @Override
@@ -81,4 +87,5 @@ public class EntertainmentFragment extends Fragment implements LoaderManager.Loa
             loadManager.initLoader(NEWS_LOADER_ID, null, this);
         }
     }
+
 }

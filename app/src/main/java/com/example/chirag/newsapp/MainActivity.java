@@ -1,14 +1,6 @@
 package com.example.chirag.newsapp;
 
-import android.app.LoaderManager;
-import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,6 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.chirag.newsapp.Fragments.BusinessFragment;
+import com.example.chirag.newsapp.Fragments.EntertainmentFragment;
+import com.example.chirag.newsapp.Fragments.HealthFragment;
+import com.example.chirag.newsapp.Fragments.ScienceFragment;
+import com.example.chirag.newsapp.Fragments.SportFragment;
+import com.example.chirag.newsapp.Fragments.TechnologyFragment;
+import com.example.chirag.newsapp.Fragments.TopStoriesFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -89,28 +89,46 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_top_stories) {
-            // Handle the camera action
-        } else if (id == R.id.nav_business) {
-            Intent businessIntent = new Intent(this, BusinessActivity.class);
-            startActivity(businessIntent);
-            return true;
-        } else if (id == R.id.nav_entertainment) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content, new EntertainmentFragment())
-                    .commit();
-        } else if (id == R.id.nav_health) {
+        switch (id) {
+            case R.id.nav_top_stories:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content, new TopStoriesFragment())
+                        .commit();
+                break;
+            case R.id.nav_business:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content, new BusinessFragment())
+                        .commit();
+                break;
+            case R.id.nav_entertainment:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content, new EntertainmentFragment())
+                        .commit();
+                break;
+            case R.id.nav_health:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content, new HealthFragment())
+                        .commit();
+            case R.id.nav_science:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content, new ScienceFragment())
+                        .commit();
+                break;
+            case R.id.nav_sports:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content, new SportFragment())
+                        .commit();
+                break;
+            case R.id.nav_tech:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content, new TechnologyFragment())
+                        .commit();
+                break;
+            case R.id.nav_share:
+                break;
 
-        } else if (id == R.id.nav_science) {
-
-        } else if (id == R.id.nav_sports) {
-
-        } else if (id == R.id.nav_tech) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_view) {
-
+            case R.id.nav_view:
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

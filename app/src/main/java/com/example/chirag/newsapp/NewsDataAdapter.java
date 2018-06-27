@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class NewsDataAdapter extends ArrayAdapter {
 
-    NewsDataAdapter(@NonNull Context context, @NonNull ArrayList<NewsInfo> objects) {
+    public NewsDataAdapter(@NonNull Context context, @NonNull ArrayList<NewsInfo> objects) {
         super(context, 0, objects);
     }
 
@@ -33,7 +33,7 @@ public class NewsDataAdapter extends ArrayAdapter {
 //            ImageView placeImage = listitem.findViewById(R.id.content_image);
 //            placeImage.setImageResource(newsInfo.getmImageUrl());
 
-            TextView newsHeading = listitem.findViewById(R.id.content_heading);
+            TextView newsHeading = listitem.findViewById(R.id.content_title);
             newsHeading.setText(newsInfo.getmTitle());
 
 //            TextView newsDescription = listitem.findViewById(R.id.content_description);
