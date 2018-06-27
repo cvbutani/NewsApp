@@ -115,52 +115,51 @@ public class NewsQuery {
 
         try {
             JSONObject jsonObject = new JSONObject(newsJSON);
-            Log.i(LOG_TAG, "JSONObject: " + jsonObject.toString());
 
-            JSONArray itemsArray = null;
-            if (jsonObject.has("articles")) {
-                itemsArray = jsonObject.getJSONArray("articles");
-                Log.i(LOG_TAG, "ARTICLES ARRAY: " + itemsArray);
-            }
-
-            if (itemsArray != null) {
-                for (int i = 0; i < itemsArray.length(); i++) {
-
-                    JSONObject elementsInItem = itemsArray.getJSONObject(i);
-                    JSONObject source = null;
-                    if (elementsInItem.has("source")) {
-                        source = elementsInItem.getJSONObject("source");
-                        Log.i(LOG_TAG, "SOURCE: " + source);
-                    }
-                    String id = "";
-                    String title = "";
-                    String description = "";
-                    String publishedDate = "";
-                    if (source != null && source.has("id")) {
-                        id = source.getString("id");
-                        Log.i(LOG_TAG, "ID: " + id);
-                        if (id != null && id.equalsIgnoreCase("the-times-of-india")) {
-                            if (elementsInItem.has("title")) {
-                                title = elementsInItem.getString("title");
-                            }
-                            if (elementsInItem.has("description")) {
-                                description = elementsInItem.getString("description");
-                            }
-                            if (elementsInItem.has("publishedAt")) {
-                                publishedDate = elementsInItem.getString("publishedAt");
-                            }
-                            Log.i(LOG_TAG, "TITLE: " + title);
-                            Log.i(LOG_TAG, "DESCRIPTION: " + description);
-                            Log.i(LOG_TAG, "PUBLISHED DATE: " + publishedDate);
-
-                            newsDetails.add(new NewsInfo(title, description, publishedDate, R.drawable.asas));
-                        }
-                    }
-
-
+            JSONObject responseObject = null;
+            JSONArray resultsArray = null;
+            if (jsonObject.has("response")) {
+                responseObject = jsonObject.getJSONObject("response");
+                if (responseObject != null && responseObject.has("results")){
+                    resultsArray = responseObject.getJSONArray("results");
                 }
             }
 
+            if (resultsArray != null) {
+                for (int i = 0; i < resultsArray.length(); i++) {
+
+                    JSONObject elementsInItem = resultsArray.getJSONObject(i);
+                    String source = null;
+                    if (elementsInItem.has("sectionName")) {
+                        source = elementsInItem.getString("sectionName");
+                        Log.i(LOG_TAG, "SECTION NAME: " + source);
+                    }
+//                    String id = "";
+                    String title = "";
+                    String description = "";
+                    String publishedDate = "";
+//                    if (source != null && source.has("id")) {
+//                        id = source.getString("id");
+//                        Log.i(LOG_TAG, "ID: " + id);
+//                        if (id != null && id.equalsIgnoreCase("the-times-of-india")) {
+                    if (elementsInItem.has("webTitle")) {
+                        title = elementsInItem.getString("webTitle");
+                    }
+                    if (elementsInItem.has("webUrl")) {
+                        description = elementsInItem.getString("webUrl");
+                    }
+                    if (elementsInItem.has("webPublicationDate")) {
+                        publishedDate = elementsInItem.getString("webPublicationDate");
+                    }
+                    Log.i(LOG_TAG, "TITLE: " + title);
+                    Log.i(LOG_TAG, "DESCRIPTION: " + description);
+                    Log.i(LOG_TAG, "PUBLISHED DATE: " + publishedDate);
+
+                    newsDetails.add(new NewsInfo(title, description, publishedDate, R.drawable.asas));
+                }
+            }
+//                }
+//            }
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Problem parsing the data JSON results", e);
         }

@@ -7,18 +7,18 @@
 
     <ImageView
         android:id="@+id/content_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:scaleType="fitXY"
-        tools:src="@drawable/ic_toi" />
+        tools:src="@drawable/button_round" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="8dp"
@@ -28,7 +28,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/content_heading"
+            android:id="@+id/content_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -36,45 +36,35 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textAllCaps="true"
-            android:textSize="18sp"
+            android:textSize="8sp"
             android:textStyle="bold"
-            tools:text="Corruption still the biggest obstacle for entrepreneurs in India" />
+            android:text="Television and Radio" />
+
 
         <TextView
-            android:id="@+id/content_description"
+            android:id="@+id/content_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            tools:text="India climbed 30 places to make it to the top 100 for ‘ease of doing business’ in the World Bank’s 2018 report." />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Corruption still the biggest obstacle for entrepreneurs in India" />
 
-        <LinearLayout
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/content_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAllCaps="true"
             android:layout_gravity="end"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_date"
-                android:textAllCaps="true"
-                android:textSize="12sp"
-                android:textStyle="italic" />
-
-            <TextView
-                android:id="@+id/content_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAllCaps="true"
-                android:textSize="12sp"
-                android:textStyle="italic"
-                tools:text="25th June 2018" />
-        </LinearLayout>
+            android:textSize="10sp"
+            android:textStyle="italic"
+            tools:text="25th June 2018" />
 
     </LinearLayout>
 

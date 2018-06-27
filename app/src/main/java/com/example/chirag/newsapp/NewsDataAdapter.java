@@ -30,14 +30,14 @@ public class NewsDataAdapter extends ArrayAdapter {
 
         NewsInfo newsInfo = (NewsInfo) getItem(position);
         if (newsInfo != null) {
-            ImageView placeImage = listitem.findViewById(R.id.content_image);
-            placeImage.setImageResource(newsInfo.getmImageUrl());
+//            ImageView placeImage = listitem.findViewById(R.id.content_image);
+//            placeImage.setImageResource(newsInfo.getmImageUrl());
 
             TextView newsHeading = listitem.findViewById(R.id.content_heading);
             newsHeading.setText(newsInfo.getmTitle());
 
-            TextView newsDescription = listitem.findViewById(R.id.content_description);
-            newsDescription.setText(newsInfo.getmDescription());
+//            TextView newsDescription = listitem.findViewById(R.id.content_description);
+//            newsDescription.setText(newsInfo.getmDescription());
 
             TextView newsDate = listitem.findViewById(R.id.content_date);
             newsDate.setText(newsInfo.getmDate());

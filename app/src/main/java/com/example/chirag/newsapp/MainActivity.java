@@ -1,6 +1,10 @@
 package com.example.chirag.newsapp;
 
+import android.app.LoaderManager;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,6 +20,8 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static final int NEWS_LOADER_ID = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
@@ -88,18 +96,20 @@ public class MainActivity extends AppCompatActivity
             startActivity(businessIntent);
             return true;
         } else if (id == R.id.nav_entertainment) {
-
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content, new EntertainmentFragment())
+                    .commit();
         } else if (id == R.id.nav_health) {
 
         } else if (id == R.id.nav_science) {
 
         } else if (id == R.id.nav_sports) {
 
-        }else if (id == R.id.nav_tech) {
+        } else if (id == R.id.nav_tech) {
 
-        }else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share) {
 
-        }else if (id == R.id.nav_view) {
+        } else if (id == R.id.nav_view) {
 
         }
 
