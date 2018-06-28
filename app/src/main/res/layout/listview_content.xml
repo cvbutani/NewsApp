@@ -35,9 +35,9 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textAllCaps="true"
-            android:textSize="8sp"
+            android:textSize="12sp"
             android:textStyle="bold"
-            android:text="Television and Radio" />
+            tools:text="Television and Radio" />
 
 
         <TextView
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:textAllCaps="true"
             android:layout_gravity="end"
-            android:textSize="10sp"
+            android:textSize="14sp"
             android:textStyle="italic"
             tools:text="25th June 2018" />
 
