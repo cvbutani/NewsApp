@@ -33,13 +33,16 @@ public class NewsDataAdapter extends ArrayAdapter {
         NewsInfo newsInfo = (NewsInfo) getItem(position);
         if (newsInfo != null) {
             ImageView placeImage = listitem.findViewById(R.id.content_image);
-            Picasso.get().load(newsInfo.getmImageUrl()).into(placeImage);
-
+            if (newsInfo.getmImageUrl() != null) {
+                Picasso.get().load(newsInfo.getmImageUrl()).into(placeImage);
+            } else {
+                placeImage.setVisibility(View.GONE);
+            }
             TextView newsHeading = listitem.findViewById(R.id.content_title);
             newsHeading.setText(newsInfo.getmTitle());
 
             TextView newsDescription = listitem.findViewById(R.id.content_header);
-            newsDescription.setText(newsInfo.getmDescription());
+            newsDescription.setText(newsInfo.getmHeader());
 
             TextView newsDate = listitem.findViewById(R.id.content_date);
             newsDate.setText(newsInfo.getmDate());

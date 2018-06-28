@@ -1,5 +1,6 @@
 package com.example.chirag.newsapp;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,7 +17,6 @@ import android.widget.Toast;
 import com.example.chirag.newsapp.Fragments.BusinessFragment;
 import com.example.chirag.newsapp.Fragments.EntertainmentFragment;
 import com.example.chirag.newsapp.Fragments.HealthFragment;
-import com.example.chirag.newsapp.Fragments.HomeFragment;
 import com.example.chirag.newsapp.Fragments.ScienceFragment;
 import com.example.chirag.newsapp.Fragments.SportFragment;
 import com.example.chirag.newsapp.Fragments.TechnologyFragment;
@@ -24,8 +24,6 @@ import com.example.chirag.newsapp.Fragments.TopStoriesFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-    private static final int NEWS_LOADER_ID = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,12 +93,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         switch (id) {
-//            case R.id.nav_home:
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.content, new HomeFragment())
-//                        .commit();
-//                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
-//                break;
             case R.id.nav_top_stories:
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.content, new TopStoriesFragment())

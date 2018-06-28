@@ -118,11 +118,11 @@ public class NewsQuery {
         try {
             JSONObject jsonObject = new JSONObject(newsJSON);
 
-            JSONObject responseObject = null;
+            JSONObject responseObject;
             JSONArray resultsArray = null;
             if (jsonObject.has("response")) {
                 responseObject = jsonObject.getJSONObject("response");
-                if (responseObject != null && responseObject.has("results")){
+                if (responseObject != null && responseObject.has("results")) {
                     resultsArray = responseObject.getJSONArray("results");
                 }
             }
@@ -131,96 +131,39 @@ public class NewsQuery {
                 for (int i = 0; i < resultsArray.length(); i++) {
 
                     JSONObject elementsInItem = resultsArray.getJSONObject(i);
-                    String source = null;
-                    if (elementsInItem.has("sectionName")) {
-                        source = elementsInItem.getString("sectionName");
-                        Log.i(LOG_TAG, "SECTION NAME: " + source);
-                    }
-//                    String id = "";
-                    String title = "";
-                    String description = "";
-                    String publishedDate = "";
-                    JSONObject imageObject = null;
-                    String thumbnail = "";
-//                    if (source != null && source.has("id")) {
-//                        id = source.getString("id");
-//                        Log.i(LOG_TAG, "ID: " + id);
-//                        if (id != null && id.equalsIgnoreCase("the-times-of-india")) {
-                    if (elementsInItem.has("webTitle")) {
-                        title = elementsInItem.getString("webTitle");
-                    }
-                    if (elementsInItem.has("webUrl")) {
-                        description = elementsInItem.getString("webUrl");
-                    }
-                    if (elementsInItem.has("webPublicationDate")) {
-                        publishedDate = elementsInItem.getString("webPublicationDate");
-                    }
-                    if (elementsInItem.has("fields")) {
-                        imageObject = elementsInItem.getJSONObject("fields");
-                        if (imageObject.has("thumbnail")) {
-                            thumbnail = imageObject.getString("thumbnail");
-                        }
-                    }
-                    Log.i(LOG_TAG, "TITLE: " + title);
-                    Log.i(LOG_TAG, "DESCRIPTION: " + description);
-                    Log.i(LOG_TAG, "PUBLISHED DATE: " + publishedDate);
-                    Log.i(LOG_TAG, "THUMBNAIL URL: " + thumbnail);
-                    newsDetails.add(new NewsInfo(title, description, publishedDate, thumbnail));
+
+                    String sectionName = newsParse(elementsInItem, null, "sectionName");
+                    String webTitle = newsParse(elementsInItem, null, "webTitle");
+                    String webUrl = newsParse(elementsInItem, null, "webUrl");
+                    String webPublicationDate = newsParse(elementsInItem, null, "webPublicationDate");
+                    String thumbnailImage = newsParse(elementsInItem, "fields", "thumbnail");
+                    String productionOffice = newsParse(elementsInItem, "fields", "productionOffice");
+                    String bodyText = newsParse(elementsInItem, "fields", "bodyText");
+
+                    newsDetails.add(new NewsInfo(productionOffice, webTitle, bodyText, webPublicationDate, thumbnailImage));
                 }
             }
-//                }
-//            }
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Problem parsing the data JSON results", e);
         }
         return newsDetails;
     }
 
-//    private static String bookInfo(JSONObject object, String key) throws JSONException {
-//        JSONObject jsonObject = null;
-//        StringBuilder arrayParameters = new StringBuilder();
-//        String value = "";
-//        JSONArray valueArray = null;
-//        if (object.has(JSONParseKey.JSON_VOLUME_INFO_KEY)) {
-//            jsonObject = object.getJSONObject(JSONParseKey.JSON_VOLUME_INFO_KEY);
-//        }
-//        if (jsonObject != null && key.equals(JSONParseKey.JSON_AUTHOR_KEY)) {
-//            if (jsonObject.has(key)) {
-//                valueArray = jsonObject.getJSONArray(key);
-//            }
-//            if (valueArray != null) {
-//                arrayParameters.append(valueArray.get(0));
-//                for (int i = 1; i < valueArray.length(); i++) {
-//                    arrayParameters.append(", ");
-//                    arrayParameters.append(valueArray.get(i));
-//                }
-//            }
-//            value = arrayParameters.toString();
-//            return value;
-//        }
-//        if (jsonObject != null) {
-//            value = jsonObject.getString(key);
-//            return value;
-//        }
-//        return value;
-//    }
-//
-//    private static String bookData(JSONObject object1, String values, String key1, String key2) throws JSONException {
-//        JSONObject jsonObjectOut;
-//        JSONObject jsonObjectIn;
-//        String value = "0";
-//        if (object1.has(values)) {
-//            jsonObjectOut = object1.getJSONObject(values);
-//            if (jsonObjectOut != null && jsonObjectOut.has(key1)) {
-//                jsonObjectIn = jsonObjectOut.getJSONObject(key1);
-//                if (jsonObjectIn != null && jsonObjectIn.has(key2)) {
-//                    value = jsonObjectIn.getString(key2);
-//                } else {
-//                    value = "0";
-//                }
-//            }
-//        }
-//        return value;
-//    }
+    private static String newsParse(JSONObject objectOne, String objectTwo, String key) throws JSONException {
+        JSONObject jsonObject;
+        String value = null;
+
+        if (objectOne != null && objectOne.has(key)) {
+            value = objectOne.getString(key);
+            return value;
+        } else if (objectOne != null && objectOne.has(objectTwo)) {
+            jsonObject = objectOne.getJSONObject(objectTwo);
+            if (jsonObject != null && jsonObject.has(key)) {
+                value = jsonObject.getString(key);
+                return value;
+            }
+        }
+        return value;
+    }
 
 }

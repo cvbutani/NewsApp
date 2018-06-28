@@ -28,7 +28,7 @@ import java.util.List;
 public class ScienceFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<NewsInfo>>{
 
     private static final int NEWS_LOADER_ID = 0;
-    private static final String SCIENCE_URL = "https://content.guardianapis.com/search?section=science&show-fields=thumbnail&api-key=00d9a257-1ff3-4d33-bff4-b26e08cd141d";
+    private static final String SCIENCE_URL = "https://content.guardianapis.com/search?section=science&show-fields=all&api-key=00d9a257-1ff3-4d33-bff4-b26e08cd141d";
 
     private NewsDataAdapter mNewsDataAdapter;
     private LoaderManager mLoadManager;

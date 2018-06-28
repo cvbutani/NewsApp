@@ -28,7 +28,7 @@ import java.util.List;
 public class BusinessFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<NewsInfo>> {
 
     private static final int NEWS_LOADER_ID = 0;
-    private static final String BUSINESS_URL = "https://content.guardianapis.com/search?section=business&show-fields=thumbnail&api-key=00d9a257-1ff3-4d33-bff4-b26e08cd141d";
+    private static final String BUSINESS_URL = "https://content.guardianapis.com/search?section=business&show-fields=all&api-key=00d9a257-1ff3-4d33-bff4-b26e08cd141d";
 
     private NewsDataAdapter mNewsDataAdapter;
     private LoaderManager mLoadManager;
