@@ -140,18 +140,18 @@ public class NewsQuery {
                     String productionOffice = newsParse(elementsInItem, "fields", "productionOffice");
                     String bodyText = newsParse(elementsInItem, "fields", "bodyText");
 
-                    newsDetails.add(new NewsInfo(productionOffice, webTitle, bodyText, webPublicationDate, thumbnailImage));
+                    newsDetails.add(new NewsInfo(productionOffice, webTitle, bodyText, webPublicationDate, thumbnailImage, webUrl, sectionName));
                 }
             }
         } catch (JSONException e) {
-            Log.e(LOG_TAG, "Problem parsing the data JSON results", e);
+            Log.e(LOG_TAG, "PROBLEM PARSING DATA FROM JSON", e);
         }
         return newsDetails;
     }
 
     private static String newsParse(JSONObject objectOne, String objectTwo, String key) throws JSONException {
         JSONObject jsonObject;
-        String value = null;
+        String value;
 
         if (objectOne != null && objectOne.has(key)) {
             value = objectOne.getString(key);
@@ -163,7 +163,7 @@ public class NewsQuery {
                 return value;
             }
         }
-        return value;
+        return null;
     }
 
 }

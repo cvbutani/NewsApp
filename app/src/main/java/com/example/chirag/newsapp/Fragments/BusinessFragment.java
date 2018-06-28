@@ -3,6 +3,7 @@ package com.example.chirag.newsapp.Fragments;
 
 import android.app.LoaderManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -11,14 +12,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.chirag.newsapp.NewsDataAdapter;
+import com.example.chirag.newsapp.NewsDisplayActivity;
 import com.example.chirag.newsapp.NewsInfo;
 import com.example.chirag.newsapp.NewsLoader;
 import com.example.chirag.newsapp.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +43,7 @@ public class BusinessFragment extends Fragment implements LoaderManager.LoaderCa
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.list_view, container, false);
 
@@ -49,6 +53,18 @@ public class BusinessFragment extends Fragment implements LoaderManager.LoaderCa
         }
         ListView listView = rootView.findViewById(R.id.list);
         listView.setAdapter(mNewsDataAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), NewsDisplayActivity.class);
+                NewsInfo info = newsInfoArrayList.get(position);
+                String sectionName = info.getmSectionName();
+                intent.putExtra("info", info);
+                intent.putExtra("header", sectionName);
+                startActivity(intent);
+            }
+        });
 
         checkInternetConnection();
 
