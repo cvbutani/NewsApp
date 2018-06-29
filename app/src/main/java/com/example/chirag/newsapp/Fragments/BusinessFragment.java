@@ -8,16 +8,21 @@ import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.example.chirag.newsapp.MainActivity;
 import com.example.chirag.newsapp.NewsDataAdapter;
 import com.example.chirag.newsapp.NewsDisplayActivity;
 import com.example.chirag.newsapp.NewsInfo;
@@ -34,8 +39,10 @@ import java.util.List;
 public class BusinessFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<NewsInfo>> {
 
     private static final int NEWS_LOADER_ID = 0;
-    private static final String BUSINESS_URL = "https://content.guardianapis.com/search?section=business&show-fields=all&api-key=00d9a257-1ff3-4d33-bff4-b26e08cd141d";
-
+    private static final String BUSINESS_URL1 = "https://content.guardianapis.com/search?section=business";
+    private static final String BUSINESS_URL3 = "show-fields=all&api-key=00d9a257-1ff3-4d33-bff4-b26e08cd141d";
+    String BUSINESS_URL2;
+    public static final String BUSINESS_URL = "https://content.guardianapis.com/search?section=business&show-fields=all&api-key=00d9a257-1ff3-4d33-bff4-b26e08cd141d";
     private NewsDataAdapter mNewsDataAdapter;
     private LoaderManager mLoadManager;
 
@@ -43,10 +50,17 @@ public class BusinessFragment extends Fragment implements LoaderManager.LoaderCa
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        BUSINESS_URL2 = getArguments().getString("text");
+    }
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         View rootView = inflater.inflate(R.layout.list_view, container, false);
 
         final ArrayList<NewsInfo> newsInfoArrayList = new ArrayList<>();
@@ -67,15 +81,8 @@ public class BusinessFragment extends Fragment implements LoaderManager.LoaderCa
                 startActivity(intent);
             }
         });
-
         checkInternetConnection();
-
         return rootView;
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -86,7 +93,7 @@ public class BusinessFragment extends Fragment implements LoaderManager.LoaderCa
 
     @Override
     public Loader<List<NewsInfo>> onCreateLoader(int id, Bundle args) {
-        return new NewsLoader(getContext(), BUSINESS_URL);
+        return new NewsLoader(getContext(), BUSINESS_URL2);
     }
 
     @Override

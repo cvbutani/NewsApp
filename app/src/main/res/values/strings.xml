@@ -16,4 +16,6 @@
     <string name="sports">Sports</string>
     <string name="technology">Technology</string>
     <string name="home">Home</string>
+    <string name="app_label">Search</string>
+    <string name="search_hint">Search</string>
 </resources>
