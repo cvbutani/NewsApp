@@ -34,6 +34,7 @@ public class NewsDataAdapter extends ArrayAdapter {
         if (newsInfo != null) {
             ImageView placeImage = listitem.findViewById(R.id.content_image);
             if (newsInfo.getmImageUrl() != null) {
+                placeImage.setVisibility(View.VISIBLE);
                 Picasso.get().load(newsInfo.getmImageUrl()).into(placeImage);
             } else {
                 placeImage.setVisibility(View.GONE);
