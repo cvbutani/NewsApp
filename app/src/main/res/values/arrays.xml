@@ -12,16 +12,4 @@
         <item>@string/settings_order_value_relevance</item>
     </string-array>
 
-    <string-array name="settings_production_office_key">
-        <item>@string/settings_production_office_label_us</item>
-        <item>@string/settings_production_office_label_uk</item>
-        <item>@string/settings_production_office_label_aus</item>
-    </string-array>
-    <string-array name="settings_production_office_value">
-        <item> </item>
-        <item>@string/settings_production_office_value_us</item>
-        <item>@string/settings_production_office_value_uk</item>
-        <item>@string/settings_production_office_value_aus</item>
-    </string-array>
-
 </resources>

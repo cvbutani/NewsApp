@@ -8,7 +8,6 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 public class SettingsActivity extends AppCompatActivity {
     @Override
@@ -25,7 +24,9 @@ public class SettingsActivity extends AppCompatActivity {
             addPreferencesFromResource(R.xml.settings_menu);
 
             Preference orderByPreference = findPreference(getString(R.string.settings_key_order_by));
+            Preference numberOfPage = findPreference(getString(R.string.settings_key_page_size));
             newsPreferenceSummary(orderByPreference);
+            newsPreferenceSummary(numberOfPage);
 
         }
 

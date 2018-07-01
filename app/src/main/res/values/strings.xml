@@ -54,7 +54,9 @@
     <string name="settings_order_key_relevance">Relevance</string>
     <string name="settings_order_value_relevance" translatable="false">relevance</string>
 
-
+    <string name="settings_default_page_size">20</string>
+    <string name="settings_key_page_size" translatable="false">page_size</string>
+    <string name="settings_title_page_size">Page Size</string>
 
 
 </resources>
