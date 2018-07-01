@@ -115,10 +115,13 @@ public class MainActivity extends AppCompatActivity
                 setActionBarTitle(getString(R.string.technology));
                 createFragment();
                 break;
-            case R.id.nav_share:
+            case R.id.nav_education:
+                setActionBarTitle(getString(R.string.education));
+                createFragment();
                 break;
-
-            case R.id.nav_view:
+            case R.id.nav_culture:
+                setActionBarTitle(getString(R.string.culture));
+                createFragment();
                 break;
         }
 
@@ -170,6 +173,18 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_tech:
                 uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_TECHNOLOGY);
+                if (url != null) {
+                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
+                }
+                break;
+            case R.id.nav_education:
+                uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_EDUCATION);
+                if (url != null) {
+                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
+                }
+                break;
+            case R.id.nav_culture:
+                uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_CULTURE);
                 if (url != null) {
                     uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
                 }

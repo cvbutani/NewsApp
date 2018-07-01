@@ -8,43 +8,50 @@
             android:id="@+id/nav_top_stories"
             android:icon="@drawable/ic_top_stories"
             android:title="@string/top_stories" />
-        <item
-            android:id="@+id/nav_business"
-            android:icon="@drawable/ic_business"
-            android:title="@string/business" />
-        <item
-            android:id="@+id/nav_entertainment"
-            android:icon="@drawable/ic_entertainment"
-            android:title="@string/entertainment" />
-        <item
-            android:id="@+id/nav_health"
-            android:icon="@drawable/ic_health"
-            android:title="@string/health" />
-        <item
-            android:id="@+id/nav_science"
-            android:icon="@drawable/ic_science"
-            android:title="@string/science" />
-        <item
-            android:id="@+id/nav_sports"
-            android:icon="@drawable/ic_cricket"
-            android:title="@string/sports" />
-        <item
-            android:id="@+id/nav_tech"
-            android:icon="@drawable/ic_technology"
-            android:title="@string/technology" />
+        <item android:title="@string/categories">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_business"
+                        android:icon="@drawable/ic_business"
+                        android:title="@string/business" />
+                    <item
+                        android:id="@+id/nav_entertainment"
+                        android:icon="@drawable/ic_entertainment"
+                        android:title="@string/entertainment" />
+                    <item
+                        android:id="@+id/nav_health"
+                        android:icon="@drawable/ic_health"
+                        android:title="@string/health" />
+                    <item
+                        android:id="@+id/nav_science"
+                        android:icon="@drawable/ic_science"
+                        android:title="@string/science" />
+                    <item
+                        android:id="@+id/nav_sports"
+                        android:icon="@drawable/ic_cricket"
+                        android:title="@string/sports" />
+                    <item
+                        android:id="@+id/nav_tech"
+                        android:icon="@drawable/ic_technology"
+                        android:title="@string/technology" />
+                    <item
+                        android:id="@+id/nav_education"
+                        android:icon="@drawable/ic_education"
+                        android:title="@string/education" />
+                    <item
+                        android:id="@+id/nav_culture"
+                        android:icon="@drawable/ic_culture"
+                        android:title="@string/culture" />
+                </group>
+            </menu>
+        </item>
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
-
+    <group android:id="@+id/settings_group">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/settings" />
+    </group>
 </menu>
