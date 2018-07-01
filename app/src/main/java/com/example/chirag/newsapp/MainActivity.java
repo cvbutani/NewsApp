@@ -9,26 +9,20 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
-import android.widget.Toast;
 
+import com.example.chirag.newsapp.Constants.ApiRequestConstant;
 import com.example.chirag.newsapp.Fragments.BusinessFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String BUSINESS_URL1 = "https://content.guardianapis.com/search?";
-    String BUSINESS_URL2;
-    private static String Business_URL;
-    Uri.Builder uribuilder;
-    Bundle bundle;
-    BusinessFragment bf;
+    private static String NEWS_URL;
+    private Bundle bundle;
     int id;
-
-    public final String LOG_TAG = getClass().getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +53,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -72,11 +65,10 @@ public class MainActivity extends AppCompatActivity
             @Override
             public boolean onQueryTextSubmit(String query) {
                 if (query != null) {
-                    BUSINESS_URL2 = query.replace(" ", "%20%");
+                    NEWS_URL = query.replace(" ", ApiRequestConstant.INPUT_REPLACEMENT);
                 }
-                Log.i(LOG_TAG, "QUERY: " + BUSINESS_URL2);
                 createFragment();
-                BUSINESS_URL2 = null;
+                NEWS_URL = null;
                 return true;
             }
 
@@ -88,13 +80,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void createFragment() {
-        getMyURL(BUSINESS_URL2);
-        BusinessFragment fragment = new BusinessFragment();
-        fragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -103,32 +88,32 @@ public class MainActivity extends AppCompatActivity
 
         switch (id) {
             case R.id.nav_top_stories:
+                setActionBarTitle(getString(R.string.top_stories));
                 createFragment();
-                Toast.makeText(this, "Top Stories", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_business:
+                setActionBarTitle(getString(R.string.business));
                 createFragment();
-                Toast.makeText(this, "Business", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_entertainment:
+                setActionBarTitle(getString(R.string.entertainment));
                 createFragment();
-                Toast.makeText(this, "Entertainment", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_health:
+                setActionBarTitle(getString(R.string.health));
                 createFragment();
-                Toast.makeText(this, "Health", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_science:
+                setActionBarTitle(getString(R.string.science));
                 createFragment();
-                Toast.makeText(this, "Science", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_sports:
+                setActionBarTitle(getString(R.string.sports));
                 createFragment();
-                Toast.makeText(this, "Sports", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_tech:
+                setActionBarTitle(getString(R.string.technology));
                 createFragment();
-                Toast.makeText(this, "Technology", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_share:
                 break;
@@ -142,56 +127,69 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    private void createFragment() {
+        getMyURL(NEWS_URL);
+        BusinessFragment fragment = new BusinessFragment();
+        fragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
+    }
+
     public void getMyURL(String url) {
-        Uri baseUri = Uri.parse(BUSINESS_URL1);
-        uribuilder = baseUri.buildUpon();
+        Uri baseUri = Uri.parse(ApiRequestConstant.SCHEME_PART);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
         switch (id) {
             case R.id.nav_business:
-                uribuilder.appendQueryParameter("section", "business");
+                uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_BUSINESS);
                 if (url != null) {
-                    uribuilder.appendQueryParameter("q", url);
+                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
                 }
                 break;
             case R.id.nav_entertainment:
-                uribuilder.appendQueryParameter("section", "tv-and-radio");
+                uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_ENTERTAINMENT);
                 if (url != null) {
-                    uribuilder.appendQueryParameter("q", url);
+                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
                 }
                 break;
             case R.id.nav_health:
-                uribuilder.appendQueryParameter("section", "healthcare-network");
+                uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_HEALTH);
                 if (url != null) {
-                    uribuilder.appendQueryParameter("q", url);
+                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
                 }
                 break;
             case R.id.nav_science:
-                uribuilder.appendQueryParameter("section", "science");
+                uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_SCIENCE);
                 if (url != null) {
-                    uribuilder.appendQueryParameter("q", url);
+                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
                 }
                 break;
             case R.id.nav_sports:
-                uribuilder.appendQueryParameter("section", "sport");
+                uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_SPORT);
                 if (url != null) {
-                    uribuilder.appendQueryParameter("q", url);
+                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
                 }
                 break;
             case R.id.nav_tech:
-                uribuilder.appendQueryParameter("section", "technology");
+                uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_TECHNOLOGY);
                 if (url != null) {
-                    uribuilder.appendQueryParameter("q", url);
+                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
                 }
                 break;
             default:
-                uribuilder.appendQueryParameter("q", url);
+                uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
                 break;
-
         }
 
-        uribuilder.appendQueryParameter("show-fields", "all");
-        uribuilder.appendQueryParameter("api-key", "00d9a257-1ff3-4d33-bff4-b26e08cd141d");
-        Business_URL = uribuilder.toString();
+        uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SHOW_FIELDS, ApiRequestConstant.RESOURCE_FIELDS);
+        uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_API, ApiRequestConstant.API_KEY);
+        String final_url = uriBuilder.toString();
         bundle = new Bundle();
-        bundle.putString("text", Business_URL);
+        bundle.putString(ApiRequestConstant.BUNDLE_STRING_EXTRA, final_url);
     }
+
+    public void setActionBarTitle(String title) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
+    }
+
 }

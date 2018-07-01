@@ -7,16 +7,17 @@ import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.chirag.newsapp.Constants.ApiRequestConstant;
 import com.example.chirag.newsapp.NewsDataAdapter;
 import com.example.chirag.newsapp.NewsDisplayActivity;
 import com.example.chirag.newsapp.NewsInfo;
@@ -29,11 +30,11 @@ import java.util.List;
 public class BusinessFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<NewsInfo>> {
 
     private static final int NEWS_LOADER_ID = 0;
-    String BUSINESS_URL;
+    private static String NEWS_URL;
     private NewsDataAdapter mNewsDataAdapter;
     private LoaderManager mLoadManager;
-    private static SwipeRefreshLayout mSwipeRefreshLayout;
-    ListView listView;
+    private ConnectivityManager mConnectivityManager;
+    private NetworkInfo mActiveNetwork;
 
     public BusinessFragment() {
         // Required empty public constructor
@@ -42,13 +43,14 @@ public class BusinessFragment extends Fragment implements LoaderManager.LoaderCa
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BUSINESS_URL = getArguments().getString("text");
+        if (getArguments() != null) {
+            NEWS_URL = getArguments().getString(ApiRequestConstant.BUNDLE_STRING_EXTRA);
+        }
     }
 
     @Override
-    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         View rootView = inflater.inflate(R.layout.list_view, container, false);
 
@@ -56,27 +58,17 @@ public class BusinessFragment extends Fragment implements LoaderManager.LoaderCa
         if (getActivity() != null) {
             mNewsDataAdapter = new NewsDataAdapter(getActivity(), newsInfoArrayList);
         }
-        listView = rootView.findViewById(R.id.list);
-        mSwipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh);
 
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                checkInternetConnectionRestartLoader();
-
-            }
-        });
-
+        ListView listView = rootView.findViewById(R.id.list);
         listView.setAdapter(mNewsDataAdapter);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), NewsDisplayActivity.class);
                 NewsInfo info = newsInfoArrayList.get(position);
                 String sectionName = info.getmSectionName();
-                intent.putExtra("info", info);
-                intent.putExtra("header", sectionName);
+                intent.putExtra(ApiRequestConstant.LISTVIEW_EXTRA_INFO, info);
+                intent.putExtra(ApiRequestConstant.LISTVIEW_EXTRA_HEADER, sectionName);
                 startActivity(intent);
             }
         });
@@ -92,8 +84,7 @@ public class BusinessFragment extends Fragment implements LoaderManager.LoaderCa
 
     @Override
     public Loader<List<NewsInfo>> onCreateLoader(int id, Bundle args) {
-        Log.i("Fragment", "URL: " + BUSINESS_URL);
-        return new NewsLoader(getContext(), BUSINESS_URL);
+        return new NewsLoader(getContext(), NEWS_URL);
     }
 
     @Override
@@ -111,14 +102,14 @@ public class BusinessFragment extends Fragment implements LoaderManager.LoaderCa
 
     public void checkInternetConnectionInitLoader() {
 
-        ConnectivityManager mConnectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = null;
+        if (getActivity() != null) {
+            mConnectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        }
         if (mConnectivityManager != null) {
-            activeNetwork = mConnectivityManager.getActiveNetworkInfo();
+            mActiveNetwork = mConnectivityManager.getActiveNetworkInfo();
         }
 
-        boolean isConnected = (activeNetwork != null) && (activeNetwork.isConnectedOrConnecting());
-
+        boolean isConnected = (mActiveNetwork != null) && (mActiveNetwork.isConnectedOrConnecting());
         if (isConnected) {
             mLoadManager = getActivity().getLoaderManager();
             mLoadManager.initLoader(NEWS_LOADER_ID, null, this);
@@ -127,19 +118,20 @@ public class BusinessFragment extends Fragment implements LoaderManager.LoaderCa
 
     public void checkInternetConnectionRestartLoader() {
 
-        ConnectivityManager mConnectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = null;
+        if (getActivity() != null) {
+            mConnectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        }
         if (mConnectivityManager != null) {
-            activeNetwork = mConnectivityManager.getActiveNetworkInfo();
+            mActiveNetwork = mConnectivityManager.getActiveNetworkInfo();
         }
 
-        boolean isConnected = (activeNetwork != null) && (activeNetwork.isConnectedOrConnecting());
-
+        boolean isConnected = (mActiveNetwork != null) && (mActiveNetwork.isConnectedOrConnecting());
         if (isConnected) {
             mLoadManager = getActivity().getLoaderManager();
             mLoadManager.restartLoader(NEWS_LOADER_ID, null, this);
         }
     }
+
 
 
 }

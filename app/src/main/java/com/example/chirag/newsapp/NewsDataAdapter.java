@@ -31,7 +31,9 @@ public class NewsDataAdapter extends ArrayAdapter {
         }
 
         NewsInfo newsInfo = (NewsInfo) getItem(position);
+
         if (newsInfo != null) {
+
             ImageView placeImage = listitem.findViewById(R.id.content_image);
             if (newsInfo.getmImageUrl() != null) {
                 placeImage.setVisibility(View.VISIBLE);
@@ -39,6 +41,7 @@ public class NewsDataAdapter extends ArrayAdapter {
             } else {
                 placeImage.setVisibility(View.GONE);
             }
+
             TextView newsHeading = listitem.findViewById(R.id.content_title);
             newsHeading.setText(newsInfo.getmTitle());
 

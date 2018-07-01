@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.chirag.newsapp.Constants.ApiRequestConstant;
 import com.squareup.picasso.Picasso;
 
 public class NewsDisplayActivity extends AppCompatActivity {
@@ -17,13 +18,14 @@ public class NewsDisplayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.news_display);
 
-        if (!getIntent().hasExtra("info")) return;
-        if (getIntent().hasExtra("header"))setTitle(getIntent().getStringExtra("header"));
-        final NewsInfo news = (NewsInfo) getIntent().getSerializableExtra("info");
+        if (!getIntent().hasExtra(ApiRequestConstant.LISTVIEW_EXTRA_INFO)) return;
 
+        if (getIntent().hasExtra(ApiRequestConstant.LISTVIEW_EXTRA_HEADER))
+            setTitle(getIntent().getStringExtra(ApiRequestConstant.LISTVIEW_EXTRA_HEADER));
+
+        final NewsInfo news = (NewsInfo) getIntent().getSerializableExtra(ApiRequestConstant.LISTVIEW_EXTRA_INFO);
 
         ImageView image = findViewById(R.id.news_display_image);
         if (news.getmImageUrl() != null) {
