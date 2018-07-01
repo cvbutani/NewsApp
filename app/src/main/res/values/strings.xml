@@ -2,24 +2,59 @@
     <string name="app_name">News App</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="nav_header_title">https://www.theguardian.com</string>
     <string name="nav_header_subtitle">abcdef.xyz@toi.com</string>
+
     <string name="nav_header_desc">Navigation header</string>
+
     <string name="action_settings">Settings</string>
     <string name="text_date">Date: </string>
     <string name="title_activity_business">Business</string>
+
     <string name="top_stories">Top Stories</string>
+
+    <string name="categories">Categories</string>
+
     <string name="business">Business</string>
     <string name="entertainment">Entertainment</string>
     <string name="health">Health</string>
     <string name="science">Science</string>
     <string name="sports">Sports</string>
     <string name="technology">Technology</string>
-    <string name="home">Home</string>
-    <string name="app_label">Search</string>
-    <string name="search_hint">Search</string>
     <string name="education">Education</string>
     <string name="culture">Culture</string>
+
     <string name="settings">Settings</string>
-    <string name="categories">Categories</string>
+
+    <string name="app_label">Search</string>
+    <string name="search_hint">Search</string>
+
+    <string name="settings_title_production_office">Production Office</string>
+
+    <string name="settings_production_office_label_us">United States</string>
+    <string name="settings_production_office_value_us" translatable="false">US</string>
+
+    <string name="settings_production_office_label_uk">United Kingdom</string>
+    <string name="settings_production_office_value_uk" translatable="false">UK</string>
+
+    <string name="settings_production_office_label_aus">Australia</string>
+    <string name="settings_production_office_value_aus" translatable="false">AUS</string>
+
+    <string name="settings_title_order_by">Order By</string>
+    <string name="settings_key_order_by" translatable="false">order_by</string>
+    <string name="settings_default_value_order_by" translatable="false">@string/settings_order_value_newest</string>
+
+    <string name="settings_order_key_newest">Newest</string>
+    <string name="settings_order_value_newest" translatable="false">newest</string>
+
+    <string name="settings_order_key_oldest">Oldest</string>
+    <string name="settings_order_value_oldest" translatable="false">oldest</string>
+
+    <string name="settings_order_key_relevance">Relevance</string>
+    <string name="settings_order_value_relevance" translatable="false">relevance</string>
+
+
+
+
 </resources>

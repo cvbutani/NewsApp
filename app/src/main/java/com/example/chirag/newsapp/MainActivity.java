@@ -1,7 +1,10 @@
 package com.example.chirag.newsapp;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
@@ -123,6 +127,10 @@ public class MainActivity extends AppCompatActivity
                 setActionBarTitle(getString(R.string.culture));
                 createFragment();
                 break;
+            case R.id.nav_settings:
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -193,6 +201,10 @@ public class MainActivity extends AppCompatActivity
                 uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
                 break;
         }
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String order_by = preferences.getString(getString(R.string.settings_key_order_by), getString(R.string.settings_default_value_order_by));
+        Log.i("ORDER BY", "ORDER BY: " + order_by);
 
         uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SHOW_FIELDS, ApiRequestConstant.RESOURCE_FIELDS);
         uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_API, ApiRequestConstant.API_KEY);

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/app_label">
+    <PreferenceCategory android:title="Filter">
+
+        <ListPreference
+            android:defaultValue="@string/settings_default_value_order_by"
+            android:entries="@array/settings_order_key"
+            android:entryValues="@array/settings_order_value"
+            android:key="@string/settings_key_order_by"
+            android:summary="%s"
+            android:title="@string/settings_title_order_by" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_title_production_office">
+        <CheckBoxPreference
+            android:key="@string/settings_production_office_value_us"
+            android:title="@string/settings_production_office_label_us" />
+        <CheckBoxPreference
+            android:key="@string/settings_production_office_value_uk"
+            android:title="@string/settings_production_office_label_uk" />
+        <CheckBoxPreference
+            android:key="@string/settings_production_office_value_aus"
+            android:title="@string/settings_production_office_label_aus" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
