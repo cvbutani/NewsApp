@@ -1,10 +1,14 @@
 package com.example.chirag.newsapp;
 
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,8 +17,12 @@ import android.widget.TextView;
 import com.example.chirag.newsapp.Constants.ApiRequestConstant;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.util.Date;
+
 public class NewsDisplayActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +46,29 @@ public class NewsDisplayActivity extends AppCompatActivity {
         title.setText(news.getmTitle());
 
         TextView date = findViewById(R.id.news_display_date);
-        date.setText(news.getmDate());
+        Date date1 = null;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z");
+        try {
+            date1 = simpleDateFormat.parse(news.getmDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        SimpleDateFormat outDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentDate = outDate.format(date1);
+
+        long currentTimeInMilis = 0;
+
+        try {
+            Date currentDateObject = outDate.parse(currentDate);
+            currentTimeInMilis = currentDateObject.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        CharSequence dateTime = DateUtils.getRelativeTimeSpanString(currentTimeInMilis, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS);
+
+        date.setText(dateTime.toString());
 
         TextView description = findViewById(R.id.news_display_description);
         description.setText(news.getmDescription());
