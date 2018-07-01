@@ -19,7 +19,7 @@ import android.view.MenuItem;
 import android.widget.SearchView;
 
 import com.example.chirag.newsapp.Constants.ApiRequestConstant;
-import com.example.chirag.newsapp.Fragments.BusinessFragment;
+import com.example.chirag.newsapp.Fragments.NewsFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity
 
     private void createFragment() {
         getMyURL(NEWS_URL);
-        BusinessFragment fragment = new BusinessFragment();
+        NewsFragment fragment = new NewsFragment();
         fragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
     }
@@ -181,11 +181,11 @@ public class MainActivity extends AppCompatActivity
             default:
                 break;
         }
-        uriBuilder.appendQueryParameter("order-by", order_by);
+        uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_ORDER_BY, order_by);
         if (url != null) {
             uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
         }
-        uriBuilder.appendQueryParameter("page-size", page_size);
+        uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_PAGE_SIZE, page_size);
         uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SHOW_FIELDS, ApiRequestConstant.RESOURCE_FIELDS);
         uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_API, ApiRequestConstant.API_KEY);
         String final_url = uriBuilder.toString();

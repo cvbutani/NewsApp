@@ -57,6 +57,7 @@
     <string name="settings_default_page_size">20</string>
     <string name="settings_key_page_size" translatable="false">page_size</string>
     <string name="settings_title_page_size">Page Size</string>
+    <string name="read_more">Read More</string>
 
 
 </resources>

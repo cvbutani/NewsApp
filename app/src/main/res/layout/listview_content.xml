@@ -37,6 +37,7 @@
             android:textAllCaps="true"
             android:textSize="12sp"
             android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
             tools:text="Television and Radio" />
 
 
@@ -48,6 +49,7 @@
             android:layout_marginStart="8dp"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="@color/primaryText"
             tools:text="Corruption still the biggest obstacle for entrepreneurs in India" />
 
         <Space

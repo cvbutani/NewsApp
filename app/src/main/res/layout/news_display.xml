@@ -14,8 +14,7 @@
             android:id="@+id/news_display_image"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/asas" />
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/news_display_title"
@@ -24,6 +23,7 @@
             android:layout_marginTop="8dp"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/primaryText"
             tools:text="Corruption still the biggest obstacle for entrepreneurs in India" />
 
         <TextView
@@ -35,25 +35,30 @@
             android:textAllCaps="true"
             android:textSize="12sp"
             android:textStyle="italic"
+            android:textColor="@color/secondaryText"
             tools:text="25th June 2018" />
 
         <TextView
             android:id="@+id/news_display_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="25"
             android:layout_marginTop="8dp"
             android:ellipsize="end"
+            android:maxLines="25"
             android:textSize="16sp"
+            android:textColor="@color/secondaryText"
             tools:text="Corruption still the biggest obstacle for entrepreneurs in India. Corruption still the biggest obstacle for entrepreneurs in India. Corruption still the biggest obstacle for entrepreneurs in India.Corruption still the biggest obstacle for entrepreneurs in India. Corruption still the biggest obstacle for entrepreneurs in India. Corruption still the biggest obstacle for entrepreneurs in India" />
 
         <Button
             android:id="@+id/news_display_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_gravity="right"
-            android:text='Read More' />
+            android:layout_marginTop="8dp"
+            android:textColor="@color/lightPrimaryColor"
+            android:background="@color/colorPrimary"
+            android:text="@string/read_more"
+            tools:ignore="RtlHardcoded" />
     </LinearLayout>
 
 </ScrollView>

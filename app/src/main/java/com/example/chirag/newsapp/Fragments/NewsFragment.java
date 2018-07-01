@@ -27,7 +27,7 @@ import com.example.chirag.newsapp.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BusinessFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<NewsInfo>> {
+public class NewsFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<NewsInfo>> {
 
     private static final int NEWS_LOADER_ID = 0;
     private static String NEWS_URL;
@@ -36,7 +36,7 @@ public class BusinessFragment extends Fragment implements LoaderManager.LoaderCa
     private ConnectivityManager mConnectivityManager;
     private NetworkInfo mActiveNetwork;
 
-    public BusinessFragment() {
+    public NewsFragment() {
         // Required empty public constructor
     }
 
