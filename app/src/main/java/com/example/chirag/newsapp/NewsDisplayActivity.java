@@ -46,29 +46,10 @@ public class NewsDisplayActivity extends AppCompatActivity {
         title.setText(news.getmTitle());
 
         TextView date = findViewById(R.id.news_display_date);
-        Date date1 = null;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z");
-        try {
-            date1 = simpleDateFormat.parse(news.getmDate());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        DateConvert dateConvert = new DateConvert();
+        String postTime = dateConvert.dateConverter(news.getmDate());
 
-        SimpleDateFormat outDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String currentDate = outDate.format(date1);
-
-        long currentTimeInMilis = 0;
-
-        try {
-            Date currentDateObject = outDate.parse(currentDate);
-            currentTimeInMilis = currentDateObject.getTime();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        CharSequence dateTime = DateUtils.getRelativeTimeSpanString(currentTimeInMilis, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS);
-
-        date.setText(dateTime.toString());
+        date.setText(postTime);
 
         TextView description = findViewById(R.id.news_display_description);
         description.setText(news.getmDescription());
@@ -84,4 +65,6 @@ public class NewsDisplayActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

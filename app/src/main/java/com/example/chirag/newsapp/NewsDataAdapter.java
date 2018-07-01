@@ -1,8 +1,10 @@
 package com.example.chirag.newsapp;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ public class NewsDataAdapter extends ArrayAdapter {
         super(context, 0, objects);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -49,7 +52,11 @@ public class NewsDataAdapter extends ArrayAdapter {
             newsDescription.setText(newsInfo.getmHeader());
 
             TextView newsDate = listitem.findViewById(R.id.content_date);
-            newsDate.setText(newsInfo.getmDate());
+
+            DateConvert dateConvert = new DateConvert();
+            String postTime = dateConvert.dateConverter(newsInfo.getmDate());
+            newsDate.setText(postTime);
+
         }
         return listitem;
     }

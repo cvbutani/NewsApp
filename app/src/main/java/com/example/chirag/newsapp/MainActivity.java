@@ -156,70 +156,40 @@ public class MainActivity extends AppCompatActivity
         switch (id) {
             case R.id.nav_business:
                 uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_BUSINESS);
-                uriBuilder.appendQueryParameter("order-by", order_by);
-                if (url != null) {
-                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
-                }
                 break;
             case R.id.nav_entertainment:
                 uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_ENTERTAINMENT);
-                uriBuilder.appendQueryParameter("order-by", order_by);
-                if (url != null) {
-                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
-                }
                 break;
             case R.id.nav_health:
                 uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_HEALTH);
-                uriBuilder.appendQueryParameter("order-by", order_by);
-                if (url != null) {
-                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
-                }
                 break;
             case R.id.nav_science:
                 uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_SCIENCE);
-                uriBuilder.appendQueryParameter("order-by", order_by);
-                if (url != null) {
-                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
-                }
                 break;
             case R.id.nav_sports:
                 uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_SPORT);
-                uriBuilder.appendQueryParameter("order-by", order_by);
-                if (url != null) {
-                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
-                }
                 break;
             case R.id.nav_tech:
                 uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_TECHNOLOGY);
-                if (url != null) {
-                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
-                }
                 break;
             case R.id.nav_education:
                 uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_EDUCATION);
-                if (url != null) {
-                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
-                }
                 break;
             case R.id.nav_culture:
                 uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SECTION, ApiRequestConstant.RESOURCE_SECTION_CULTURE);
-                uriBuilder.appendQueryParameter("order-by", order_by);
-                if (url != null) {
-                    uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
-                }
                 break;
             default:
-                uriBuilder.appendQueryParameter("order-by", order_by);
-                uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
                 break;
+        }
+        uriBuilder.appendQueryParameter("order-by", order_by);
+        if (url != null) {
+            uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_QUERY, url);
         }
         uriBuilder.appendQueryParameter("page-size", page_size);
         uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SHOW_FIELDS, ApiRequestConstant.RESOURCE_FIELDS);
         uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_API, ApiRequestConstant.API_KEY);
         String final_url = uriBuilder.toString();
         Log.i(getClass().getName(), "LINK: " + final_url);
-        order_by = getString(R.string.settings_default_value_order_by);
-        page_size = getString(R.string.settings_default_page_size);
         bundle = new Bundle();
         bundle.putString(ApiRequestConstant.BUNDLE_STRING_EXTRA, final_url);
     }
