@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.chirag.newsapp.Constants.ApiRequestConstant;
 import com.example.chirag.newsapp.NewsDataAdapter;
@@ -131,7 +132,4 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
             mLoadManager.restartLoader(NEWS_LOADER_ID, null, this);
         }
     }
-
-
-
 }

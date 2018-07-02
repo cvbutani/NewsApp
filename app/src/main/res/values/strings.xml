@@ -30,17 +30,6 @@
     <string name="app_label">Search</string>
     <string name="search_hint">Search</string>
 
-    <string name="settings_title_production_office">Production Office</string>
-
-    <string name="settings_production_office_label_us">United States</string>
-    <string name="settings_production_office_value_us" translatable="false">US</string>
-
-    <string name="settings_production_office_label_uk">United Kingdom</string>
-    <string name="settings_production_office_value_uk" translatable="false">UK</string>
-
-    <string name="settings_production_office_label_aus">Australia</string>
-    <string name="settings_production_office_value_aus" translatable="false">AUS</string>
-
     <string name="settings_title_order_by">Order By</string>
     <string name="settings_key_order_by" translatable="false">order_by</string>
     <string name="settings_default_value_order_by" translatable="false">@string/settings_order_value_newest</string>
@@ -58,6 +47,5 @@
     <string name="settings_key_page_size" translatable="false">page_size</string>
     <string name="settings_title_page_size">Page Size</string>
     <string name="read_more">Read More</string>
-
 
 </resources>

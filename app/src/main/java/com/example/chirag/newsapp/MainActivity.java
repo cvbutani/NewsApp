@@ -17,8 +17,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import android.util.Log;
-
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -195,7 +193,6 @@ public class MainActivity extends AppCompatActivity
         uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_SHOW_FIELDS, ApiRequestConstant.RESOURCE_FIELDS);
         uriBuilder.appendQueryParameter(ApiRequestConstant.SCHEME_PART_API, ApiRequestConstant.API_KEY);
         String final_url = uriBuilder.toString();
-        Log.i(getClass().getName(), "LINK: " + final_url);
         bundle = new Bundle();
         bundle.putString(ApiRequestConstant.BUNDLE_STRING_EXTRA, final_url);
     }
