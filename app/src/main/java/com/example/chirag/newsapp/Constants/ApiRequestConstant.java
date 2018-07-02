@@ -15,7 +15,7 @@ public class ApiRequestConstant {
 
     public static final String RESOURCE_FIELDS = "all";
 
-    public static final String API_KEY = "00d9a257-1ff3-4d33-bff4-b26e08cd141d";
+    public static final String API_KEY = "test";
 
     public static final String SCHEME_PART_QUERY = "q";
     public static final String SCHEME_PART_SECTION = "section";
@@ -31,6 +31,17 @@ public class ApiRequestConstant {
     public static final String LISTVIEW_EXTRA_INFO = "info";
 
     public static final String LISTVIEW_EXTRA_HEADER = "header";
+
+    public static final String JSON_PARSE_KEY_RESPONSE = "response";
+    public static final String JSON_PARSE_KEY_RESULTS = "results";
+    public static final String JSON_PARSE_KEY_SECTION_NAME = "sectionName";
+    public static final String JSON_PARSE_KEY_TITLE = "webTitle";
+    public static final String JSON_PARSE_KEY_URL = "webUrl";
+    public static final String JSON_PARSE_KEY_PUBLICATION_DATE = "webPublicationDate";
+    public static final String JSON_PARSE_KEY_PRODUCTION_OFFICE = "productionOffice";
+    public static final String JSON_PARSE_KEY_THUMBNAIL = "thumbnail";
+    public static final String JSON_PARSE_KEY_BODY_TEXT = "bodyText";
+    public static final String JSON_PARSE_KEY_FIELDS = "fields";
 
     public ApiRequestConstant() {
     }

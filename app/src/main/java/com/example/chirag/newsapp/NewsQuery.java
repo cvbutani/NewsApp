@@ -3,6 +3,7 @@ package com.example.chirag.newsapp;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.example.chirag.newsapp.Constants.ApiRequestConstant;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -120,10 +121,10 @@ public class NewsQuery {
 
             JSONObject responseObject;
             JSONArray resultsArray = null;
-            if (jsonObject.has("response")) {
-                responseObject = jsonObject.getJSONObject("response");
-                if (responseObject != null && responseObject.has("results")) {
-                    resultsArray = responseObject.getJSONArray("results");
+            if (jsonObject.has(ApiRequestConstant.JSON_PARSE_KEY_RESPONSE)) {
+                responseObject = jsonObject.getJSONObject(ApiRequestConstant.JSON_PARSE_KEY_RESPONSE);
+                if (responseObject != null && responseObject.has(ApiRequestConstant.JSON_PARSE_KEY_RESULTS)) {
+                    resultsArray = responseObject.getJSONArray(ApiRequestConstant.JSON_PARSE_KEY_RESULTS);
                 }
             }
 
@@ -132,13 +133,13 @@ public class NewsQuery {
 
                     JSONObject elementsInItem = resultsArray.getJSONObject(i);
 
-                    String sectionName = newsParse(elementsInItem, null, "sectionName");
-                    String webTitle = newsParse(elementsInItem, null, "webTitle");
-                    String webUrl = newsParse(elementsInItem, null, "webUrl");
-                    String webPublicationDate = newsParse(elementsInItem, null, "webPublicationDate");
-                    String thumbnailImage = newsParse(elementsInItem, "fields", "thumbnail");
-                    String productionOffice = newsParse(elementsInItem, "fields", "productionOffice");
-                    String bodyText = newsParse(elementsInItem, "fields", "bodyText");
+                    String sectionName = newsParse(elementsInItem, null, ApiRequestConstant.JSON_PARSE_KEY_SECTION_NAME);
+                    String webTitle = newsParse(elementsInItem, null, ApiRequestConstant.JSON_PARSE_KEY_TITLE);
+                    String webUrl = newsParse(elementsInItem, null, ApiRequestConstant.JSON_PARSE_KEY_URL);
+                    String webPublicationDate = newsParse(elementsInItem, null, ApiRequestConstant.JSON_PARSE_KEY_PUBLICATION_DATE);
+                    String thumbnailImage = newsParse(elementsInItem, ApiRequestConstant.JSON_PARSE_KEY_FIELDS, ApiRequestConstant.JSON_PARSE_KEY_THUMBNAIL);
+                    String productionOffice = newsParse(elementsInItem, ApiRequestConstant.JSON_PARSE_KEY_FIELDS, ApiRequestConstant.JSON_PARSE_KEY_PRODUCTION_OFFICE);
+                    String bodyText = newsParse(elementsInItem, ApiRequestConstant.JSON_PARSE_KEY_FIELDS, ApiRequestConstant.JSON_PARSE_KEY_BODY_TEXT);
 
                     newsDetails.add(new NewsInfo(productionOffice, webTitle, bodyText, webPublicationDate, thumbnailImage, webUrl, sectionName));
                 }
