@@ -15,7 +15,7 @@ public class ApiRequestConstant {
 
     public static final String RESOURCE_FIELDS = "all";
 
-    public static final String API_KEY = "test";
+    public static final String API_KEY = "00d9a257-1ff3-4d33-bff4-b26e08cd141d";
 
     public static final String SCHEME_PART_QUERY = "q";
     public static final String SCHEME_PART_SECTION = "section";
