@@ -44,6 +44,12 @@ public class NewsQuery {
         return extractNewsUpdates(jsonResponse);
     }
 
+    /**
+     * Creates a URL object from the String representation.
+     *
+     * @param findUrl - String value passed to generate URL object.
+     * @return URL object.
+     */
     private static URL createUrl(String findUrl) {
         URL url = null;
 
@@ -55,6 +61,19 @@ public class NewsQuery {
         return url;
     }
 
+    /**
+     * Obtains new HttpUrlConnection by calling URL.openConnection() and casting result
+     * to HttpURLConnection.
+     * Prepares the request. The response body may be read from the stream returned by
+     * URLConnection.getInputStream().
+     * Once the response body has been read, the HttpURLConnection should be closed by
+     * calling disconnect().
+     *
+     * @param url will be passed generated from createURL method.
+     * @return response body.
+     * @throws IOException - If the HTTP response indicates that an error occurred,
+     *                     URLConnection.getInputStream() will throw an IOException.
+     */
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
 
@@ -91,6 +110,17 @@ public class NewsQuery {
         return jsonResponse;
     }
 
+    /**
+     * Most callers should wrap the returned streams with BufferedInputStream or
+     * BufferedOutputStream. Callers that do only bulk reads or writes may omit
+     * buffering.
+     * When transferring large amounts of data to or from a server, use streams
+     * to limit how much data is in memory at once. Unless you need the entire
+     * body to be in memory at once, process it as a stream
+     *
+     * @param inputStream created in makeHttpRequest method.
+     * @return Response in String format.
+     */
     private static String readFromStream(InputStream inputStream) {
         StringBuilder output = new StringBuilder();
         try {

@@ -51,6 +51,10 @@ public class MainActivity extends AppCompatActivity
         onNavigationItemSelected(navigationView.getMenu().getItem(0).setChecked(true));
     }
 
+    /**
+     * This method is implemented to create drawer layout.
+     */
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -61,6 +65,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /** Inflate the menu; this adds items to the action bar if it is present. In our case it
+     *  creates search view.
+     *
+     * @param menu Inflate the menu; this adds items to the action bar if it is present.
+     * @return TRUE if menu is created.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -70,6 +80,10 @@ public class MainActivity extends AppCompatActivity
         SearchView searchView = (SearchView) item.getActionView();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            // onQueryTextSubmit method will return user searched text in a String format and
+            // saved in NEWS_URL.
+
             @Override
             public boolean onQueryTextSubmit(String query) {
                 if (query != null) {
@@ -88,6 +102,12 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /** This method is implemented for DrawerLayout. Particular fragment will be created when user
+     *  clicks on it.
+     *
+     * @param item gives the int of id selected in drawer.
+     * @return creates fragment based on id.
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -142,12 +162,26 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * This method creates createsFragment by generating URL.
+     */
+
     private void createFragment() {
         getMyURL(NEWS_URL);
         NewsFragment fragment = new NewsFragment();
         fragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
     }
+
+    /**
+     * This method will be executed when user clicks on new drawer sections. It will generate URL of
+     * particular drawer.
+     *
+     * Also, It will take inputs from SharedPreferences and generates new URLs for all fragments.
+     *
+     * @param url is user searched input. It will take this user input and generates new URL String.
+     *
+     */
 
     public void getMyURL(String url) {
         Uri baseUri = Uri.parse(ApiRequestConstant.SCHEME_PART);
@@ -197,6 +231,10 @@ public class MainActivity extends AppCompatActivity
         bundle.putString(ApiRequestConstant.BUNDLE_STRING_EXTRA, final_url);
     }
 
+    /**
+     * This method is used to set title of all fragments.
+     * @param title - what user wants to set.
+     */
     public void setActionBarTitle(String title) {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);
