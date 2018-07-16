@@ -65,7 +65,8 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    /** Inflate the menu; this adds items to the action bar if it is present. In our case it
+    /**
+     * Inflate the menu; this adds items to the action bar if it is present. In our case it
      *  creates search view.
      *
      * @param menu Inflate the menu; this adds items to the action bar if it is present.
@@ -102,7 +103,8 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    /** This method is implemented for DrawerLayout. Particular fragment will be created when user
+    /**
+     * This method is implemented for DrawerLayout. Particular fragment will be created when user
      *  clicks on it.
      *
      * @param item gives the int of id selected in drawer.
@@ -179,7 +181,7 @@ public class MainActivity extends AppCompatActivity
      *
      * Also, It will take inputs from SharedPreferences and generates new URLs for all fragments.
      *
-     * @param url is user searched input. It will take this user input and generates new URL String.
+     * @param url - is user searched input. It will take this user input and generates new URL String.
      *
      */
 

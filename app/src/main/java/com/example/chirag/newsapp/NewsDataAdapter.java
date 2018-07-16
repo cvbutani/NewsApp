@@ -18,10 +18,28 @@ import java.util.ArrayList;
 
 public class NewsDataAdapter extends ArrayAdapter {
 
+    /**
+     * This method is used to provide Views for an adapter view.
+     * @param context - current context.
+     * @param objects - objects to represent in ListView.
+     */
     public NewsDataAdapter(@NonNull Context context, @NonNull ArrayList<NewsInfo> objects) {
         super(context, 0, objects);
     }
 
+    /**
+     * Method describes the translation between the data item and the View to display.
+     * getView() is the method that returns the actual view used as a row within the
+     * ListView at a particular position. Another method used is getItem() which is
+     * already present in the ArrayAdapter class and its task is to simply get the
+     * data item associated with the specified position in the data set which is
+     * associated with that ArrayAdapter.
+     *
+     * @param position - item position
+     * @param convertView - converts data into View
+     * @param parent - contains other views and Its a superclass of all of the layout classes.
+     * @return the actual view used as a row within the ListView at a particular position.
+     */
     @RequiresApi(api = Build.VERSION_CODES.N)
     @NonNull
     @Override

@@ -13,6 +13,11 @@ public class DateConvert {
     public DateConvert() {
     }
 
+    /**
+     * Converts given String of dataTimeFormant into "2 Hours Ago" format.
+     * @param dateStringFormat - Date and Time in String format
+     * @return - 2 Hours Ago in String format.
+     */
     @RequiresApi(api = Build.VERSION_CODES.N)
     public String dateConverter(String dateStringFormat) {
         Date date = null;
