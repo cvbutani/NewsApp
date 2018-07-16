@@ -41,6 +41,10 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         // Required empty public constructor
     }
 
+    /**
+     * Method is used to set Title of Fragment.
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,13 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         }
     }
 
+    /**
+     * Set up user interface from list_view.xml file.
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return created view.
+     */
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -101,6 +112,9 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         mNewsDataAdapter.clear();
     }
 
+    /**
+     * Method will check internet connection and initialize LoaderManager.
+     */
     public void checkInternetConnectionInitLoader() {
 
         if (getActivity() != null) {
@@ -117,6 +131,9 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         }
     }
 
+    /**
+     * Method will check internet connection and restart loaderManager if there is any change in list items.
+     */
     public void checkInternetConnectionRestartLoader() {
 
         if (getActivity() != null) {

@@ -31,6 +31,11 @@ public class NewsQuery {
     public NewsQuery() {
     }
 
+    /**
+     * It will fetch the news from API.
+     * @param requestUrl - URL of the news that needs to be extracted.
+     * @return List of NewsInfo Array.
+     */
     public static List<NewsInfo> fetchNewsUpdates(String requestUrl) {
         URL url = createUrl(requestUrl);
 
@@ -140,6 +145,11 @@ public class NewsQuery {
         return output.toString();
     }
 
+    /**
+     * Use this method to extract news updates from JSON String.
+     * @param newsJSON - string value of JSON.
+     * @return - List of NewsInfo Array.
+     */
     private static List<NewsInfo> extractNewsUpdates(String newsJSON) {
         if (TextUtils.isEmpty(newsJSON)) {
             return null;
@@ -180,6 +190,14 @@ public class NewsQuery {
         return newsDetails;
     }
 
+    /**
+     * Parse news from JSONObject and save it in String format.
+     * @param objectOne - JSONObject/JSONArray value.
+     * @param objectTwo - Key that we want to extract.
+     * @param key - Key that we want to extract
+     * @return - String value using JSONObject.
+     * @throws JSONException
+     */
     private static String newsParse(JSONObject objectOne, String objectTwo, String key) throws JSONException {
         JSONObject jsonObject;
         String value;
